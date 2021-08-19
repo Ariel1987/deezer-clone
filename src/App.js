@@ -1,24 +1,21 @@
-import './App.css';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { setLoading } from './store/actions/loadingActions';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      deezer app
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  loading: state.loadingReducer.loading,
+});
+
+const mapDispatchProps = dispatch => ({
+  setLoading: isLoading => dispatch(setLoading(isLoading))
+});
+
+export default connect(mapStateToProps, mapDispatchProps)(App);
